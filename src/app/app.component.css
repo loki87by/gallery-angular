@@ -1,0 +1,20 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  overflow: hidden;
+}
+
+button {
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 2px 2px 2px #000;
+  background: radial-gradient(ellipse at center, violet, blue, cyan);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: radial-gradient(ellipse at center, green, yellow, red);
+}

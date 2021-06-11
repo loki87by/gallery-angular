@@ -1,0 +1,31 @@
+.content {
+  position: relative;
+  width: 100vw;
+  height: calc(92vh - 6vmax);
+  margin: auto;
+  overflow: hidden;
+}
+.content__background {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  opacity: 0.9;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.content__container {
+  margin: 1vmax;
+  padding: 1vmax;
+  width: calc(100% - 4vmax);
+  height: calc(100% - 4vmax);
+  border-radius: 1vmax;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: #000;
+  overflow-y: scroll;
+}

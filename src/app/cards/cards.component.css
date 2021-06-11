@@ -1,0 +1,24 @@
+.card{
+  position: relative;
+  width: 30%;
+  max-height: 70%;
+  padding: 1vmin;
+  margin-bottom: 1vmax;
+  border-radius: 2vmin;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.card:hover {
+  border: 1px solid yellow;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
