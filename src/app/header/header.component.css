@@ -1,8 +1,17 @@
 .header {
-  width: 100%;
+  width: calc(100vw - 3vmax);
   height: 5vh;
   margin: auto;
   padding: 1.5vmax;
+  background: -o-linear-gradient(
+    right,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet
+  );
   background: -webkit-gradient(
     linear,
     right top,
@@ -14,8 +23,15 @@
     color-stop(blue),
     to(violet)
   );
-  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-  background: linear-gradient(to left, orange, yellow, green, cyan, blue, violet);
+  background: linear-gradient(
+    to left,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet
+  );
 }
 .header__logo {
   margin: 0;
