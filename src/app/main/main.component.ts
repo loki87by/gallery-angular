@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 
 interface CardData {
   comments: string[];
@@ -21,6 +21,7 @@ interface PopupData {
       />
       <cards-comp
         [popupOpened]="popupOpened"
+        [am]="am"
         class="content__container"
         (onChanged)="onChanged($event)"
       ></cards-comp>
@@ -35,11 +36,12 @@ interface PopupData {
         <div class="popup__image-container">
           <img src="{{ link }}" class="popup__image" alt="" />
         </div>
-        <div class="popup__image-content">
+        <div [class.popup__image-content]="true" [class.invenrse]=!am>
           <button
             (click)="like()"
             [class.popup__like]="true"
             [class.popup__like_active]="isLiked"
+            [class.invenrse]=!am
           ></button>
           <figcaption class="popup__image-title">{{ lastComment }}</figcaption>
           <button (click)="toggleInput()">Add New Comment</button>
@@ -47,6 +49,7 @@ interface PopupData {
             type="text"
             [class.popup__input]="true"
             [class.popup__input_hide]="!inputIsOpen"
+            [class.invenrse]=!am
             [(ngModel)]="text"
             placeholder="Введите текст"
           />
@@ -68,8 +71,9 @@ interface PopupData {
   styleUrls: ["./main.component.css"],
 })
 export class MainComponent implements OnInit {
+  @Input() am: boolean;
   background: string =
-    "https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/day/01.jpg";
+    `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/day/01.jpg`;
   count: number = 0;
   index: string;
   popupOpened: boolean = false;
@@ -87,7 +91,7 @@ export class MainComponent implements OnInit {
       this.index = "0" + this.count;
     } else {
       this.index = String(this.count);
-      this.background = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/day/${this.index}.jpg`;
+      this.background = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${this.am ? 'day' : 'night'}/${this.index}.jpg`;
     }
   }
 

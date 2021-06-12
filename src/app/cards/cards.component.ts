@@ -48,6 +48,7 @@ class Card {
 export class CardsComponent implements OnInit {
   items: Card[] = [];
   @Input() popupOpened: boolean;
+  @Input() am: boolean;
   popupNeedOpen: boolean = false;
   @Output() onChanged = new EventEmitter<PopupData>();
   initialCards() {
@@ -58,7 +59,7 @@ export class CardsComponent implements OnInit {
       } else {
         number = i;
       }
-      const source: string = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/day/${number}.jpg`;
+      const source: string = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${this.am ? 'day' : 'night'}/${number}.jpg`;
       const card = new Card(source);
       this.items.push(card);
     }

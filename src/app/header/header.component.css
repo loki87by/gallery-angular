@@ -3,6 +3,8 @@
   height: 5vh;
   margin: auto;
   padding: 1.5vmax;
+  display: flex;
+  justify-content: space-between;
   background: -o-linear-gradient(
     right,
     orange,
@@ -39,4 +41,35 @@
   font-weight: 900;
   color: #fff;
   text-shadow: 1px 1px 8px black;
+}
+
+.header__timepiece{
+  display: flex;
+}
+
+.header__text {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 1px 1px 8px black;
+}
+
+.header__time{
+  color: #000;
+}
+
+.header__button{
+  margin: 0 1vmin;
+  margin-block-end: 1em;
+  padding: 0;
+  background: transparent !important;
+  color: blue;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.header__button:hover{
+  background: transparent !important;
+  color: #fff;
 }
