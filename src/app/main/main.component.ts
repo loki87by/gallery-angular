@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, OnChanges } from "@angular/core";
 
 interface CardData {
   comments: string[];
@@ -21,7 +21,7 @@ interface PopupData {
       />
       <cards-comp
         [popupOpened]="popupOpened"
-        [am]="am"
+        [day]="day"
         class="content__container"
         (onChanged)="onChanged($event)"
       ></cards-comp>
@@ -36,20 +36,21 @@ interface PopupData {
         <div class="popup__image-container">
           <img src="{{ link }}" class="popup__image" alt="" />
         </div>
-        <div [class.popup__image-content]="true" [class.invenrse]=!am>
+        <div [class.popup__image-content]="true" [class.invenrse]="!day">
           <button
             (click)="like()"
             [class.popup__like]="true"
             [class.popup__like_active]="isLiked"
-            [class.invenrse]=!am
+            [class.popup__like-night]="!day"
+            [class.popup__like-night_active]="!day && isLiked"
           ></button>
-          <figcaption class="popup__image-title">{{ lastComment }}</figcaption>
+          <figcaption class="popup__image-title">{{ comments ? comments[comments.length - 1] : ''}}</figcaption>
           <button (click)="toggleInput()">Add New Comment</button>
           <input
             type="text"
             [class.popup__input]="true"
             [class.popup__input_hide]="!inputIsOpen"
-            [class.invenrse]=!am
+            [class.invenrse]="!day"
             [(ngModel)]="text"
             placeholder="Введите текст"
           />
@@ -70,11 +71,13 @@ interface PopupData {
     </div>`,
   styleUrls: ["./main.component.css"],
 })
-export class MainComponent implements OnInit {
-  @Input() am: boolean;
-  background: string =
-    `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/day/01.jpg`;
-  count: number = 0;
+export class MainComponent implements OnInit, OnChanges {
+  @Input() day: boolean =
+    new Date().getHours() < 19 && new Date().getHours() > 6;
+  background: string = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${
+    this.day ? "day" : "night"
+  }/01.jpg`;
+  count: number = 1;
   index: string;
   popupOpened: boolean = false;
   link: string;
@@ -82,17 +85,18 @@ export class MainComponent implements OnInit {
   isLiked: boolean;
   inputIsOpen: boolean = false;
   text: string = "";
-  lastComment: string = "";
   changeBackground() {
     if (this.count === 20) {
-      this.count = 0;
+      this.count = 1;
     }
     if (this.count < 10) {
       this.index = "0" + this.count;
     } else {
       this.index = String(this.count);
-      this.background = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${this.am ? 'day' : 'night'}/${this.index}.jpg`;
     }
+    this.background = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${
+      this.day ? "day" : "night"
+    }/${this.index}.jpg`;
   }
 
   timer() {
@@ -112,6 +116,7 @@ export class MainComponent implements OnInit {
 
   closePopup() {
     this.popupOpened = !this.popupOpened;
+    this.inputIsOpen = false;
   }
 
   like() {
@@ -130,11 +135,14 @@ export class MainComponent implements OnInit {
     this.comments.push(text);
     this.toggleInput();
     this.text = "";
-    this.lastComment = this.comments[this.comments.length - 1];
   }
 
   ngOnInit() {
     this.changeBackground();
     this.timer();
+  }
+
+  ngOnChanges() {
+    this.changeBackground();
   }
 }

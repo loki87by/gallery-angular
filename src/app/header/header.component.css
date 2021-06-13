@@ -43,7 +43,7 @@
   text-shadow: 1px 1px 8px black;
 }
 
-.header__timepiece{
+.header__timepiece {
   display: flex;
 }
 
@@ -55,11 +55,11 @@
   text-shadow: 1px 1px 8px black;
 }
 
-.header__time{
+.header__time {
   color: #000;
 }
 
-.header__button{
+.header__button {
   margin: 0 1vmin;
   margin-block-end: 1em;
   padding: 0;
@@ -69,7 +69,14 @@
   font-weight: 600;
 }
 
-.header__button:hover{
+.header__button:hover {
   background: transparent !important;
   color: #fff;
+}
+
+.header__button_spin {
+  text-shadow: 2px 2px 2px #fff !important;
+}
+.header__button_spin:hover {
+  text-shadow: 2px 2px 2px #000 !important;
 }

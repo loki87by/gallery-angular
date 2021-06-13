@@ -12,6 +12,16 @@ h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  cursor: default;
+}
 hr {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -162,6 +172,6 @@ template {
 [hidden] {
   display: none;
 }
-.invenrse{
-  filter:invert(1);
+.invenrse {
+  filter: invert(1);
 }

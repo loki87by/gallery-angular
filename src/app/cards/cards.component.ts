@@ -1,4 +1,11 @@
-import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Input,
+  Output,
+  OnChanges,
+} from "@angular/core";
 
 interface CardData {
   comments: string[];
@@ -45,13 +52,15 @@ class Card {
   `,
   styleUrls: ["./cards.component.css"],
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent implements OnInit, OnChanges {
   items: Card[] = [];
   @Input() popupOpened: boolean;
-  @Input() am: boolean;
+  @Input() day: boolean;
+  stringDay = String(new Date().getHours() < 19 && new Date().getHours() > 6);
   popupNeedOpen: boolean = false;
   @Output() onChanged = new EventEmitter<PopupData>();
   initialCards() {
+    this.items = [];
     for (let i = 1; i <= 20; i++) {
       let number;
       if (i < 10) {
@@ -59,7 +68,9 @@ export class CardsComponent implements OnInit {
       } else {
         number = i;
       }
-      const source: string = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${this.am ? 'day' : 'night'}/${number}.jpg`;
+      const source: string = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${
+        this.day ? "day" : "night"
+      }/${number}.jpg`;
       const card = new Card(source);
       this.items.push(card);
     }
@@ -79,7 +90,18 @@ export class CardsComponent implements OnInit {
     }
   }
 
+  changeCards() {
+    if (this.stringDay !== String(this.day)) {
+      this.initialCards();
+      this.stringDay = String(this.day);
+    }
+  }
+
   ngOnInit() {
     this.initialCards();
+  }
+
+  ngOnChanges() {
+    this.changeCards();
   }
 }

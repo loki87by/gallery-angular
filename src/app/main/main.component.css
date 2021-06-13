@@ -111,6 +111,7 @@
   margin: 0;
 }
 .popup__image-title {
+  max-width: 25vw;
   font-weight: 600;
   font-size: 1.5rem;
   color: #000;
@@ -142,6 +143,10 @@
   background-color: #fff;
 }
 
+.popup__like-night {
+  filter: none !important;
+}
+
 .popup__like:hover {
   opacity: 0.6;
 }
@@ -150,9 +155,13 @@
   background-image: url("../icons/like2.svg");
 }
 
+.popup__like-night_active {
+  filter: initial !important;
+}
+
 .popup__comments {
   width: 100%;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .popup__comments::-webkit-scrollbar {
@@ -190,6 +199,8 @@
 
 .popup__comments-item {
   margin: 1vmin;
+  max-width: 20vw;
+  overflow-wrap: break-word;
 }
 .popup__buttons {
   width: -webkit-fill-available;
