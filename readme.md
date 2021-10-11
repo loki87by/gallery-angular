@@ -1,3 +1,4 @@
+# **Gallery Angular**
 Аналог [проекта на ReactJs](https://github.com/loki87by/gallery/) написанный на AngularJs но с немного менее развитым функционалом
 
 В проекте используются:
