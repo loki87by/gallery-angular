@@ -69,7 +69,7 @@ export class CardsComponent implements OnInit, OnChanges {
         number = i;
       }
       const source: string = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${
-        this.day ? "day" : "night"
+        this.day ? "afternoon" : "night"
       }/${number}.jpg`;
       const card = new Card(source);
       this.items.push(card);

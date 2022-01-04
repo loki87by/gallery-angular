@@ -1,10 +1,11 @@
 .header {
-  width: calc(100vw - 3vmax);
-  height: 5vh;
+  width: calc(100vw - 3vw);
+  height: 5vw;
   margin: auto;
-  padding: 1.5vmax;
+  padding: 1.5vw;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   background: -o-linear-gradient(
     right,
     orange,

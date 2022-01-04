@@ -75,7 +75,7 @@ export class MainComponent implements OnInit, OnChanges {
   @Input() day: boolean =
     new Date().getHours() < 19 && new Date().getHours() > 6;
   background: string = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${
-    this.day ? "day" : "night"
+    this.day ? "afternoon" : "night"
   }/01.jpg`;
   count: number = 1;
   index: string;
@@ -95,7 +95,7 @@ export class MainComponent implements OnInit, OnChanges {
       this.index = String(this.count);
     }
     this.background = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${
-      this.day ? "day" : "night"
+      this.day ? "afternoon" : "night"
     }/${this.index}.jpg`;
   }
 
